@@ -6,6 +6,8 @@ using Photon.Realtime;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private string playerPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +24,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("En room1, somos " + PhotonNetwork.CurrentRoom.PlayerCount);
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Debug.Log("Soy el master");
-            PhotonNetwork.InstantiateRoomObject("Prefabs/Player", Vector3.zero, Quaternion.identity);
-        }
+        playerPrefab = "Prefabs/Player" + PhotonNetwork.CurrentRoom.PlayerCount;
+        //playerPrefab = "Prefabs/Player1";
+        PhotonNetwork.Instantiate(playerPrefab, new Vector3(PhotonNetwork.CurrentRoom.PlayerCount - 2.0f, 0,0), Quaternion.identity);
     }
 }

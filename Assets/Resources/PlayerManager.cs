@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (myPhotonView.IsMine)
         {
             float horizontalVelocity = Input.GetAxis("Horizontal");
             myRigidbody2D.velocity = new Vector2(horizontalVelocity * speed, 0);
@@ -40,6 +40,7 @@ public class PlayerManager : MonoBehaviour
     [PunRPC]
     void RotatePlayer(bool rotate)
     {
-        mySpriteRenderer.flipX = rotate;
+        if(mySpriteRenderer != null)
+            mySpriteRenderer.flipX =  rotate;
     }
 }
