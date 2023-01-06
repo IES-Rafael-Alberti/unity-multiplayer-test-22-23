@@ -26,11 +26,13 @@ public class PlayerManager : MonoBehaviour
         if (myPhotonView.IsMine)
         {
             float horizontalVelocity = Input.GetAxis("Horizontal");
-            myRigidbody2D.velocity = new Vector2(horizontalVelocity * speed, 0);
+            myRigidbody2D.velocity = new Vector2(horizontalVelocity * speed, myRigidbody2D.velocity.y);
             
             // Movimiento horizontal 
             if (horizontalVelocity > 0.0f) myPhotonView.RPC("RotatePlayer", RpcTarget.All, false);
             else if(horizontalVelocity < 0.0f) myPhotonView.RPC("RotatePlayer", RpcTarget.All, true);
+            
+            
             
             // Animaciones
             GetComponent<Animator>().SetBool("running", Mathf.Abs(horizontalVelocity) > 0.1f);
