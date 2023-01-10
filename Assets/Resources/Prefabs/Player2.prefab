@@ -79,8 +79,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,6 +185,8 @@ MonoBehaviour:
   myPhotonView: {fileID: 0}
   myAnimator: {fileID: 0}
   speed: 5
+  jumpForce: 8
+  jumping: 0
 --- !u!95 &278831680935741416
 Animator:
   serializedVersion: 4
@@ -195,7 +197,7 @@ Animator:
   m_GameObject: {fileID: 6772031523325150377}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e2d661b17b7af2942b2fa6c7fa5a0780, type: 2}
+  m_Controller: {fileID: 9100000, guid: 41084771d18b39c08ba566f129a7de36, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

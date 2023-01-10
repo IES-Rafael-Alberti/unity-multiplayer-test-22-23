@@ -31,7 +31,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
+  m_Name: P2
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: running
@@ -39,7 +39,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 01f8837a6530929d1b96b30e339545b7, type: 2}
+  m_Motion: {fileID: 7400000, guid: d1534eae7cdd5e544b6a919a68de1ac6, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -151,7 +151,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6c8044c413473f0d0ad7fb02aa77c8fc, type: 2}
+  m_Motion: {fileID: 7400000, guid: 68625a1b4754fa6949b4ad4d741a75f5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

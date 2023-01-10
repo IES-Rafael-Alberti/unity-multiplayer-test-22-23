@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PhotonView myPhotonView;
     [SerializeField] private Animator myAnimator;
     [SerializeField] private float speed = 5.0f;
+    [SerializeField] private float jumpForce = 5.0f;
+    [SerializeField] private bool jumping = false;
     
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,8 @@ public class PlayerManager : MonoBehaviour
             if (horizontalVelocity > 0.0f) myPhotonView.RPC("RotatePlayer", RpcTarget.All, false);
             else if(horizontalVelocity < 0.0f) myPhotonView.RPC("RotatePlayer", RpcTarget.All, true);
             
-            
+            // Salto
+            if (Input.GetButtonDown("Jump") && myRigidbody2D.velocity.y == 0.0f) myRigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             
             // Animaciones
             GetComponent<Animator>().SetBool("running", Mathf.Abs(horizontalVelocity) > 0.1f);
