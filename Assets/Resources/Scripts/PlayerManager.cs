@@ -31,8 +31,8 @@ public class PlayerManager : MonoBehaviour
             myRigidbody2D.velocity = new Vector2(horizontalVelocity * speed, myRigidbody2D.velocity.y);
             
             // Movimiento horizontal 
-            if (horizontalVelocity > 0.0f) myPhotonView.RPC("RotatePlayer", RpcTarget.All, false);
-            else if(horizontalVelocity < 0.0f) myPhotonView.RPC("RotatePlayer", RpcTarget.All, true);
+            if (horizontalVelocity > 0.0f) EventoRotacion(false);
+            else if(horizontalVelocity < 0.0f) EventoRotacion(true);
             
             // Salto
             if (Input.GetButtonDown("Jump") && myRigidbody2D.velocity.y == 0.0f) myRigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -42,10 +42,15 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    [PunRPC]
-    void RotatePlayer(bool rotate)
+
+    void EventoRotacion(bool rotate)
     {
-        if(mySpriteRenderer != null)
-            mySpriteRenderer.flipX =  rotate;
+        EventManager.TriggerEvent("rotatePlayer",
+            new Dictionary<string, object>
+            {
+                { "rotate", rotate },
+                { "view", myPhotonView },
+                { "renderer", mySpriteRenderer },
+            });
     }
 }

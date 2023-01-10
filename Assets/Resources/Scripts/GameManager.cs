@@ -14,29 +14,36 @@ public class GameManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        // Conexión Photon
         PhotonNetwork.ConnectUsingSettings();
         Debug.Log("Conectando...");
     }
 
     public override void OnConnectedToMaster()
     {
+        // Callback (método que se llama al producirse un evento)
         Debug.Log("Conectado");
         PhotonNetwork.JoinOrCreateRoom("room1", new RoomOptions() { MaxPlayers = 2 }, TypedLobby.Default);
     }
 
     public override void OnJoinedRoom()
     {
+        // Callback tras entrar en la sala
         Debug.Log("En room1, somos " + PhotonNetwork.CurrentRoom.PlayerCount);
-        playerPrefab = "Prefabs/Player" + PhotonNetwork.CurrentRoom.PlayerCount;
+        // Dependiendo del número de jugadores, se elige la id del jugador TODO 
         playerId = PhotonNetwork.CurrentRoom.PlayerCount.ToString(); 
+        // Elige prefab según id
+        playerPrefab = "Prefabs/Player" + playerId;
+        // Busca id para reflejarlo en el canvas
         GameObject go = GameObject.Find("id");
         go.GetComponent<TMPro.TextMeshProUGUI>().text = playerId;
-        //GameObject.FindWithTag("id").GetComponent<TextMeshPro>().text = playerId;
+        // Posición de cámara y jugadores
         float playerX = -11.0f + (PhotonNetwork.CurrentRoom.PlayerCount - 1) * 22.0f;
+        // Ajusta cámara
         Vector3 camPosition = Camera.main.transform.position;
         camPosition.x = playerX;
         Camera.main.transform.position = camPosition;
+        // Crea jugador
         PhotonNetwork.Instantiate(playerPrefab, new Vector3(playerX, 0,0), Quaternion.identity);
-
     }
 }
