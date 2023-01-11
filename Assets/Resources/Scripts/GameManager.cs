@@ -8,8 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    private static Dictionary<string, string> choices = new Dictionary<string, string>();
+    
     [SerializeField] private string playerPrefab;
     [SerializeField] public string playerId;
+    [SerializeField] public GameObject myPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +47,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         camPosition.x = playerX;
         Camera.main.transform.position = camPosition;
         // Crea jugador
-        PhotonNetwork.Instantiate(playerPrefab, new Vector3(playerX, 0,0), Quaternion.identity);
+        myPlayer = PhotonNetwork.Instantiate(playerPrefab, new Vector3(playerX, 0,0), Quaternion.identity);
+    }
+
+    public static void Choice(string choice, string player)
+    {
+        choices[player] = choice;
+        Debug.Log(choices.ToStringFull());
     }
 }

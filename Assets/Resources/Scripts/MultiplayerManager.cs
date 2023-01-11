@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class MultiplayerManager : MonoBehaviour
 {
+    private GameObject myPlayer;
+    
     // Start is called before the first frame update
     void Start()
     {
         EventManager.StartListening("rotatePlayer", OnRotatePlayer);
+        EventManager.StartListening("choice", OnChoice);
     }
 
     // Update is called once per frame
@@ -19,16 +22,15 @@ public class MultiplayerManager : MonoBehaviour
     
     void OnRotatePlayer(Dictionary<string, object> message)
     {
-        SpriteRenderer mySprite = (SpriteRenderer) message["renderer"];
+        myPlayer = (GameObject) message["player"];
+        PhotonView myPhotonView = myPlayer.GetComponent<PhotonView>();
         bool rotate = (bool) message["rotate"];
-        PhotonView myPhotonView = (PhotonView)message["view"];
-        myPhotonView.RPC("RotatePlayer", RpcTarget.All, mySprite, rotate);
+        // Debug.Log($"{myPlayer.name} rota {rotate}");
+        myPhotonView.RPC("RotatePlayer", RpcTarget.All, rotate);
     }
 
-    [PunRPC]
-    void RotatePlayer(SpriteRenderer sprite, bool rotate)
+    void OnChoice(Dictionary<string, object> message)
     {
-        if(sprite != null)
-            sprite.flipX =  rotate;
+        GameManager.Choice((string) message["choice"], (string) message["player"]);
     }
 }

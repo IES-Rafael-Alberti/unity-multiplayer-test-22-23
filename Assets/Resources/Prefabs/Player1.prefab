@@ -186,7 +186,7 @@ MonoBehaviour:
   myAnimator: {fileID: 0}
   speed: 5
   jumpForce: 8
-  jumping: 0
+  rotate: 0
 --- !u!95 &278831680935741416
 Animator:
   serializedVersion: 4

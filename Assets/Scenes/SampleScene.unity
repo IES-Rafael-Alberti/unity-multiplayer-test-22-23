@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 19810328}
   - component: {fileID: 19810327}
   - component: {fileID: 19810329}
+  - component: {fileID: 19810330}
   m_Layer: 0
   m_Name: papel P1
   m_TagString: Untagged
@@ -234,6 +235,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &19810330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19810326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cabc3a5981b2a2e9583ef60a4044220a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choice: 
+  player: 
 --- !u!1 &144049282
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +260,7 @@ GameObject:
   - component: {fileID: 144049284}
   - component: {fileID: 144049283}
   - component: {fileID: 144049285}
+  - component: {fileID: 144049286}
   m_Layer: 0
   m_Name: tijeras P2
   m_TagString: Untagged
@@ -345,6 +361,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &144049286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144049282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cabc3a5981b2a2e9583ef60a4044220a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choice: 
+  player: 
 --- !u!1 &154465299
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +834,7 @@ GameObject:
   - component: {fileID: 490157962}
   - component: {fileID: 490157961}
   - component: {fileID: 490157963}
+  - component: {fileID: 490157964}
   m_Layer: 0
   m_Name: tijeras P1
   m_TagString: Untagged
@@ -904,6 +935,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &490157964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490157960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cabc3a5981b2a2e9583ef60a4044220a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choice: 
+  player: 
 --- !u!1 &492566822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1237,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &616881960
 GameObject:
@@ -1226,7 +1271,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &616881962
 MonoBehaviour:
@@ -1375,7 +1420,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &633180856
 GameObject:
@@ -1388,6 +1433,7 @@ GameObject:
   - component: {fileID: 633180858}
   - component: {fileID: 633180857}
   - component: {fileID: 633180859}
+  - component: {fileID: 633180860}
   m_Layer: 0
   m_Name: piedra P1
   m_TagString: Untagged
@@ -1488,6 +1534,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &633180860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633180856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cabc3a5981b2a2e9583ef60a4044220a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choice: 
+  player: 
 --- !u!1 &794020860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,6 +2016,7 @@ GameObject:
   - component: {fileID: 1140648306}
   - component: {fileID: 1140648305}
   - component: {fileID: 1140648307}
+  - component: {fileID: 1140648308}
   m_Layer: 0
   m_Name: piedra P2
   m_TagString: Untagged
@@ -2056,6 +2117,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1140648308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140648304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cabc3a5981b2a2e9583ef60a4044220a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choice: 
+  player: 
 --- !u!1 &1191657745
 GameObject:
   m_ObjectHideFlags: 0
@@ -3495,6 +3570,7 @@ GameObject:
   - component: {fileID: 1379406381}
   - component: {fileID: 1379406380}
   - component: {fileID: 1379406382}
+  - component: {fileID: 1379406383}
   m_Layer: 0
   m_Name: papel P2
   m_TagString: Untagged
@@ -3595,6 +3671,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1379406383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379406379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cabc3a5981b2a2e9583ef60a4044220a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choice: 
+  player: 
 --- !u!1 &1480153519
 GameObject:
   m_ObjectHideFlags: 0

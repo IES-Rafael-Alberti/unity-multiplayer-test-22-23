@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Animator myAnimator;
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float jumpForce = 5.0f;
-    [SerializeField] private bool jumping = false;
+    [SerializeField] private bool rotate = false;
     
     // Start is called before the first frame update
     void Start()
@@ -31,9 +31,9 @@ public class PlayerManager : MonoBehaviour
             myRigidbody2D.velocity = new Vector2(horizontalVelocity * speed, myRigidbody2D.velocity.y);
             
             // Movimiento horizontal 
-            if (horizontalVelocity > 0.0f) EventoRotacion(false);
-            else if(horizontalVelocity < 0.0f) EventoRotacion(true);
-            
+            if (horizontalVelocity > 0.0f && rotate) EventManager.RotateEvent(gameObject, false);
+            else if (horizontalVelocity < 0.0f && !rotate) EventManager.RotateEvent(gameObject, true);
+
             // Salto
             if (Input.GetButtonDown("Jump") && myRigidbody2D.velocity.y == 0.0f) myRigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             
@@ -41,16 +41,12 @@ public class PlayerManager : MonoBehaviour
             GetComponent<Animator>().SetBool("running", Mathf.Abs(horizontalVelocity) > 0.1f);
         }
     }
-
-
-    void EventoRotacion(bool rotate)
+    
+    [PunRPC]
+    void RotatePlayer(bool rotation)
     {
-        EventManager.TriggerEvent("rotatePlayer",
-            new Dictionary<string, object>
-            {
-                { "rotate", rotate },
-                { "view", myPhotonView },
-                { "renderer", mySpriteRenderer },
-            });
+        rotate = rotation;
+        if(mySpriteRenderer != null)
+            mySpriteRenderer.flipX =  rotation;
     }
 }

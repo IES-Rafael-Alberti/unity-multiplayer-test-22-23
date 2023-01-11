@@ -58,4 +58,24 @@ public class EventManager : MonoBehaviour {
             thisEvent.Invoke(message);
         }
     }
+
+    // Extra: event calling
+    public static void RotateEvent(GameObject gameObject, bool rotate)
+    {
+            EventManager.TriggerEvent("rotatePlayer",
+                new Dictionary<string, object>
+                {
+                    { "rotate", rotate },
+                    { "player", gameObject },
+                });
+    }
+    public static void ChoiceEvent(GameObject gameObject, string choice, string player)
+    {
+        EventManager.TriggerEvent("choice",
+            new Dictionary<string, object>
+            {
+                { "choice", choice },
+                { "player", player },
+            });
+    }
 }
