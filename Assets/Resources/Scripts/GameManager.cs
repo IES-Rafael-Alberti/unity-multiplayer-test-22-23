@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    private static Dictionary<string, string> choices = new Dictionary<string, string>();
+    public static Dictionary<string, string> choices = new Dictionary<string, string>();
     
     [SerializeField] private string playerPrefab;
-    [SerializeField] public string playerId;
+    [SerializeField] public static string playerId;
     [SerializeField] public GameObject myPlayer;
 
     // Start is called before the first frame update
@@ -54,5 +54,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         choices[player] = choice;
         Debug.Log(choices.ToStringFull());
+        if(choices.Count == 2)
+            EventManagerCustom.EndGameEvent();
     }
 }

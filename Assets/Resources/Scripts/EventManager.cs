@@ -78,4 +78,15 @@ public class EventManager : MonoBehaviour {
                 { "player", player },
             });
     }
+    
+    public static void EndGameEvent()
+    {
+        EventManager.TriggerEvent("gameDecision", null);
+        //EventManager.TriggerEvent("endGame", null);
+    }
+    
+    public static void GameDecisionEvent()
+    {
+        EventManager.TriggerEvent("gameDecision", null);
+    }
 }

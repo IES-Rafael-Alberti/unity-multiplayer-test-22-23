@@ -6,12 +6,16 @@ using UnityEngine;
 public class MultiplayerManager : MonoBehaviour
 {
     private GameObject myPlayer;
+    private bool gameEnd = false;
+    [SerializeField] private GameObject doors;
+    [SerializeField] private GameObject choicesSprites;
     
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.StartListening("rotatePlayer", OnRotatePlayer);
-        EventManager.StartListening("choice", OnChoice);
+        EventManagerCustom.endGameEvent += OnEndGame;
+        EventManagerCustom.choiceEvent += OnChoice;
+        EventManagerCustom.gameDecisionEvent += OnGameDecision;
     }
 
     // Update is called once per frame
@@ -19,18 +23,49 @@ public class MultiplayerManager : MonoBehaviour
     {
         
     }
-    
-    void OnRotatePlayer(Dictionary<string, object> message)
+
+    void OnChoice(string choice, string player)
     {
-        myPlayer = (GameObject) message["player"];
-        PhotonView myPhotonView = myPlayer.GetComponent<PhotonView>();
-        bool rotate = (bool) message["rotate"];
-        // Debug.Log($"{myPlayer.name} rota {rotate}");
-        myPhotonView.RPC("RotatePlayer", RpcTarget.All, rotate);
+        GameManager.Choice(choice, player);
+    }
+    
+    void OnEndGame()
+    {
+        doors.SetActive(false);
+        choicesSprites.SetActive(false);
     }
 
-    void OnChoice(Dictionary<string, object> message)
+    void OnGameDecision()
     {
-        GameManager.Choice((string) message["choice"], (string) message["player"]);
+        if (!gameEnd)
+        {
+            gameEnd = true;
+            GameObject go = GameObject.Find("id");
+            
+            go.GetComponent<TMPro.TextMeshProUGUI>().text = 
+                winResult(GameManager.choices, "P" + GameManager.playerId);
+        }
+    }
+
+    string winResult(Dictionary<string, string> choices, string player)
+    {
+        if (choices["P1"] == choices["P2"])
+            return "EMPATE!!!";
+        string winner = "P1";
+        switch (choices["P1"])
+        {
+            case "piedra":
+                if (choices["P2"] == "papel") winner = "P2";
+                break;
+            case "papel":
+                if (choices["P2"] == "tijeras") winner = "P2";
+                break;
+            case "tijeras":
+                if (choices["P2"] == "piedra") winner = "P2";
+                break;
+        }
+
+        if (winner == player) return "VICTORIA!!!!";
+        return "PAQUETE, NO SABES JUGAR NI A ESTO, MANCO!!!!";
     }
 }

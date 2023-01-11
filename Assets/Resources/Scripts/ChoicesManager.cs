@@ -18,6 +18,6 @@ public class ChoicesManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        EventManager.ChoiceEvent(other.gameObject, choice, player);
+        EventManagerCustom.ChoiceEvent(other.gameObject, choice, player);
     }
 }
